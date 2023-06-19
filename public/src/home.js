@@ -61,27 +61,17 @@ function getMostCommonGenres(books) {
   return commonGenres.slice(0, 5);
 }
 
-/*
-  [
-    { name: "incididunt nostrud minim", count: 30 },
-    { name: "culpa do sint", count: 30 },
-    { name: "ullamco est minim", count: 29 },
-    ...
-  ]
-*/
 function getMostPopularBooks(books) {
   // It returns an array containing five objects or fewer that represents the most popular books in the library. Popularity is represented by the number of times a book has been borrowed.
 
   // need an empty array to push to at the end
-  let result = [];
-  // iterating
-  books.forEach((bookObj) => {
+  let result = books.map((bookObj) => {
     // destructuring the object to the properties i need
     const { borrows, title } = bookObj;
     // creating the object I need
     let obj = { name: title, count: borrows.length };
     // pushing to the arr
-    result.push(obj);
+    return obj;
   });
   // making my sort function with my new arr that has my new obj in it
   result.sort((bookA, bookB) => {

@@ -1,25 +1,23 @@
 function findAuthorById(authors, id) {
-  // It returns the author object that has the matching ID.
-  // iterating through the array
-  for (let i = 0; i < authors.length; i++) {
-    // used an if with the condition to check if the author objects id property within the authors array is equal to the inputted id
-    if (authors[i].id === id) {
-      // return that spefific author if it true
-      return authors[i];
-    }
-  }
+  // Filter the authors array to find the author object with the matching ID
+  const filteredAuthors = authors.filter((authorObj) => authorObj.id === id);
+
+  // Return the first author object found (or undefined if not found)
+  return filteredAuthors[0];
 }
 
 function findBookById(books = [], id = "") {
   // It returns the book object that has the matching ID.
   // start by iterating through the array
-  for (let book of books) {
+  const result = books.find((booksObj) => {
     // use an if to check a condition that states if the id property within the book object thats in the books array is equal to the inputted id we would then return that book
-    if (book.id === id) {
+    if (booksObj.id === id) {
       // return that spefific book object
-      return book;
+      return booksObj;
     }
-  }
+  });
+  // make sure to return outside the scope of the advanced function
+  return result;
 }
 
 function partitionBooksByBorrowedStatus(books = []) {
